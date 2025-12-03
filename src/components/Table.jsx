@@ -94,6 +94,11 @@ return(
                     <td>{displayed.AbsMag}</td>
                 </tr>
                 
+                <tr>
+                    <td> X: </td>
+                    <td> {displayed.Xg}</td>
+                </tr>
+
         </tbody>
     </table>
 );
