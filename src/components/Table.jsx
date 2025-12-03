@@ -4,19 +4,21 @@ import { useState } from "react";
 import '../App.css';
 import Wrapper from "./Wrapper";
 
-const Table = ({selectedStar}) => {
+const Table = ({star}) => {
 
   console.log("Table component loaded");
-  console.log("data =", data);
-  console.log("Is data an array?", Array.isArray(data));
-  console.log("First item:", data[0]);
+//   console.log("data =", data);
+//   console.log("Is data an array?", Array.isArray(data));
+//   console.log("First item:", data[0]);
   
-if(!selectedStar)
-{
-    return(
-        <Wrapper/>
-    )
-}
+// if(!selectedStar)
+// {
+//     return(
+//         <Wrapper/>
+//     )
+// }
+
+const displayed = star || data[0];
 
 return(
     <table>
@@ -24,80 +26,77 @@ return(
     
                 <tr>
                     <td> ID: </td>
-                    <td>{selectedStar.ID} {console.log("ID: ", selectedStar.ID)}</td>
-
+                    <td>{displayed.ID}</td>
                 </tr>
 
                 <tr> 
                     <td> Hip: </td>
-                    <td>{selectedStar.Hip}</td>
+                    <td>{displayed.Hip}</td>
                 </tr>
 
                  <tr> 
                     <td> Hab?: </td>
-                    <td>{selectedStar.Hab}</td>
+                    <td>{displayed.Hab}</td>
                 </tr>
 
                 <tr> 
                     <td> Display Name: </td>
-                    <td>{selectedStar.DisplayName}</td>
+                    <td>{displayed.DisplayName}</td>
                 </tr>
 
                 <tr> 
                     <td> Hyg: </td>
-                    <td>{selectedStar.Hyg}</td>
+                    <td>{displayed.Hyg}</td>
                 </tr>
 
                 <tr> 
                     <td> Bayer Flamsteed: </td>
-                    <td>{selectedStar.BayerFlamsteed}</td>
+                    <td>{displayed.BayerFlamsteed}</td>
                 </tr>
 
                <tr> 
                     <td>  Gliese: </td>
-                    <td>{selectedStar.Gliese}</td>
+                    <td>{displayed.Gliese}</td>
                 </tr>
 
-                   <tr> 
+                <tr> 
                     <td> BD: </td>
-                    <td>{selectedStar.BD}</td>
+                    <td>{displayed.BD}</td>
                 </tr>
                 
-                   <tr> 
+                <tr> 
                     <td> HD: </td>
-                    <td>{selectedStar.HD}</td>
+                    <td>{displayed.HD}</td>
                 </tr>
 
-                   <tr> 
+                <tr> 
                     <td> HR: </td>
-                    <td>{selectedStar.HR}</td>
+                    <td>{displayed.HR}</td>
                 </tr>
 
-                   <tr> 
+                <tr> 
                     <td> Proper Name: </td>
-                    <td>{selectedStar.ProperName}</td>
+                    <td>{displayed.ProperName}</td>
                 </tr>
 
-                       <tr> 
+                <tr> 
                     <td> Spectral Class: </td>
-                    <td>{selectedStar.SpectralClass}</td>
+                    <td>{displayed.SpectralClass}</td>
                 </tr>
 
-                       <tr> 
+                <tr> 
                     <td> Distance: </td>
-                    <td>{selectedStar.Distance}</td>
+                    <td>{displayed.Distance}</td>
                 </tr>
 
-                   <tr> 
+                <tr> 
                     <td> Abs Mag: </td>
-                    <td>{selectedStar.AbsMag}</td>
+                    <td>{displayed.AbsMag}</td>
                 </tr>
-
+                
         </tbody>
     </table>
-
 );
-
 };
 
 export default Table;

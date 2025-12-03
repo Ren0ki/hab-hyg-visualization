@@ -3,8 +3,9 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
+import { Raycasting } from './Raycasting';
 
-export default function Stars(onClickStar)
+export default function Stars({onClickStar})
 {
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
@@ -54,10 +55,10 @@ export default function Stars(onClickStar)
        
     //------HANDLE RAYCASTING------//
         const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2;
+        const mouse = new THREE.Vector2();
         
         const handleClick = (event) => {
-        const rect = mount.getBounding();  //mouse position
+        const rect = mount.getBoundingClientReact();  //mouse position
         mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         mouse.y=((event.clientY - rect.top) / rect.height) * 2 - 1;
         raycaster.setFromCamera(mouse, camera);
@@ -65,8 +66,7 @@ export default function Stars(onClickStar)
 
         if(hit.length > 0){
             const instanceID = hit[0].instanceID;
-            console.log("Clicked: ", star);
-            onClickStar && onClickStar(data[instanced]);
+            onClickStar && onClickStar(data[instanceID]);
         }
     };
 
@@ -95,7 +95,7 @@ export default function Stars(onClickStar)
     //------HANDLE CLEANUP------//
         return () => {
             window.removeEventListener("resize", handleResize);
-            mount.removeEventListener("click", handleClick);
+            mount.removeEventListener("Click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };

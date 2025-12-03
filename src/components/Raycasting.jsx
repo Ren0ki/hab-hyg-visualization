@@ -1,8 +1,7 @@
     import * as THREE from 'three';
 
-    export function Raycast(renderer, camera, instanced, onClickStar)
+    export function Raycasting(renderer, camera, instanced, onClickStar)
     {
-    //------HANDLE RAYCASTING------//
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2;
         
@@ -14,11 +13,10 @@
         const hit = raycaster.intersectObject(instanced);
 
         if(hit.length > 0){
-            const instanceID = hit[0].instanceID;
+            onClickStar(hit[0].instanceID);
             console.log("Clicked: ", star);
             onClickStar && onClickStar(data[instanced]);
         }
-
         renderer.domElement.addEventListener("Click", click);
     };
 }
