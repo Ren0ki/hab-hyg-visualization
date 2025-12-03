@@ -24,9 +24,8 @@ return(
     
                 <tr>
                     <td> ID: </td>
-                    <td>{selectedStar.ID}</td>
-                    console.log("ID: ", selectedStar.ID);
-                    
+                    <td>{selectedStar.ID} {console.log("ID: ", selectedStar.ID)}</td>
+
                 </tr>
 
                 <tr> 
