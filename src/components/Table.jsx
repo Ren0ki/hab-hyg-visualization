@@ -25,6 +25,8 @@ return(
                 <tr>
                     <td> ID: </td>
                     <td>{selectedStar.ID}</td>
+                    console.log("ID: ", selectedStar.ID);
+                    
                 </tr>
 
                 <tr> 
