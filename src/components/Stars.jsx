@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
 
-export default function Stars()
+export default function Stars(onClickStar)
 {
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
@@ -30,6 +30,7 @@ export default function Stars()
         let rows = [];
         let instanced;
 
+        //parse json file
                 for(let i = 0; i < data.length; i++)
                 {
                     const row = data[i];
@@ -65,6 +66,29 @@ export default function Stars()
 
                 scene.add(instanced); //add instance sphere
         
+        //raycast for interaction
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2;
+
+        const handleClick = (event) => {
+
+        //mouse position
+        const rect = mount.getBounding();
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y=((event.clientY - rect.top) / rect.height) * 2 - 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const hit = raycaster.intersectObject(instanced);
+
+        if(hit.length > 0){
+            const instanceID = hit[0].instanceID;
+            console.log("Clicked: ", star);
+            onClickStar && onClickStar(data[instanced]);
+        }
+    };
+
+    mount.addEventListener("Click", handleClick);
+
         //window resize function, will separate later
         const handleResize = () => {
             camera.aspect = mount.clientWidth / mount.clientHeight;
@@ -85,11 +109,12 @@ export default function Stars()
         //cleanup
         return () => {
             window.removeEventListener("resize", handleResize);
+            mount.removeEventListener("click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };
 
-    }, []);
+    }, [onClickStar]);
 
     return(<div ref={mountRef} style={{width: "100vw", height: "100vh", overflow: "hidden"}}/>);
 

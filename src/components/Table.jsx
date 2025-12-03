@@ -2,96 +2,95 @@ import data from "../local-data/data.json";
 import React from "react";
 import { useState } from "react";
 import '../App.css';
+import Wrapper from "./Wrapper";
 
-const Table = () => {
+const Table = ({selectedStar}) => {
 
   console.log("Table component loaded");
   console.log("data =", data);
   console.log("Is data an array?", Array.isArray(data));
   console.log("First item:", data[0]);
   
+if(!selectedStar)
+{
+    return(
+        <Wrapper/>
+    )
+}
+
 return(
     <table>
-
         <tbody>
-           
-           {data.slice(0, 10).map (data => ( 
-            <tr key = {data.ID}>
-
+    
                 <tr>
                     <td> ID: </td>
-                    <td>{data.ID}</td>
+                    <td>{selectedStar.ID}</td>
                 </tr>
 
                 <tr> 
                     <td> Hip: </td>
-                    <td>{data.Hip}</td>
+                    <td>{selectedStar.Hip}</td>
                 </tr>
 
                  <tr> 
                     <td> Hab?: </td>
-                    <td>{data.Hab}</td>
+                    <td>{selectedStar.Hab}</td>
                 </tr>
 
                 <tr> 
                     <td> Display Name: </td>
-                    <td>{data.DisplayName}</td>
+                    <td>{selectedStar.DisplayName}</td>
                 </tr>
 
                 <tr> 
                     <td> Hyg: </td>
-                    <td>{data.Hyg}</td>
+                    <td>{selectedStar.Hyg}</td>
                 </tr>
 
                 <tr> 
                     <td> Bayer Flamsteed: </td>
-                    <td>{data.BayerFlamsteed}</td>
+                    <td>{selectedStar.BayerFlamsteed}</td>
                 </tr>
 
                <tr> 
                     <td>  Gliese: </td>
-                    <td>{data.Gliese}</td>
+                    <td>{selectedStar.Gliese}</td>
                 </tr>
 
                    <tr> 
                     <td> BD: </td>
-                    <td>{data.BD}</td>
+                    <td>{selectedStar.BD}</td>
                 </tr>
                 
                    <tr> 
                     <td> HD: </td>
-                    <td>{data.HD}</td>
+                    <td>{selectedStar.HD}</td>
                 </tr>
 
                    <tr> 
                     <td> HR: </td>
-                    <td>{data.HR}</td>
+                    <td>{selectedStar.HR}</td>
                 </tr>
 
                    <tr> 
                     <td> Proper Name: </td>
-                    <td>{data.ProperName}</td>
+                    <td>{selectedStar.ProperName}</td>
                 </tr>
 
                        <tr> 
                     <td> Spectral Class: </td>
-                    <td>{data.SpectralClass}</td>
+                    <td>{selectedStar.SpectralClass}</td>
                 </tr>
 
                        <tr> 
                     <td> Distance: </td>
-                    <td>{data.Distance}</td>
+                    <td>{selectedStar.Distance}</td>
                 </tr>
 
                    <tr> 
                     <td> Abs Mag: </td>
-                    <td>{data.AbsMag}</td>
+                    <td>{selectedStar.AbsMag}</td>
                 </tr>
-
-            <tr/>
-        </tr>
-
-            ))}
 
         </tbody>
     </table>

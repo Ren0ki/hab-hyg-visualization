@@ -1,7 +1,8 @@
-import Stars from "./components/Stars.jsx";
 import { HashRouter, Routes, Route } from "react-router";
-import { useStat, useEffect } from "react";
+import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage.jsx";
+import Stars from "./components/Stars.jsx";
+import Table from "./components/Table.jsx";
 
 function App() {
   //return <Stars />;
