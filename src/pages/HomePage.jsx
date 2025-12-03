@@ -1,12 +1,14 @@
-import Table from "../components/Table";
+//import Table from "../components/Table";
 import Wrapper from "../components/Wrapper";
+import Stars from "../components/Stars";
 
 const HomePage = () => {
 
 return (
     <Wrapper>
         <br/><br/>
-        <Table />
+        {/* <Table /> */}
+        <Stars />
     </Wrapper>
 
 );
