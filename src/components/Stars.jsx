@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
-import { Raycasting } from './Raycasting';
+//import { Raycasting } from './Raycasting';
 
 export default function Stars({onClickStar})
 {
@@ -14,7 +14,9 @@ export default function Stars({onClickStar})
     useEffect(() => {
 
     //------INIITIALIZING ENVIRONMENT VARIABLES------//
+        console.log("BEFORE MOUNT:", mountRef.current);
         const mount = mountRef.current; //construct mounting var
+        console.log("AFTER MOUNT:", mountRef.current);
         const scene = new THREE.Scene(); //construct scene
         const camera = new THREE.PerspectiveCamera(75, mount.clientWidth / mount.clientHeight, 1, 1e7); //construct camera
         camera.position.z = 500; //camera poistion on z-axis
@@ -56,23 +58,37 @@ export default function Stars({onClickStar})
     //------HANDLE RAYCASTING------//
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
+
+        instanced.raycast =  THREE.Mesh.prototype.raycast;
+        instanced.instanceMatrix.needsUpdate = true;
         
         const handleClick = (event) => {
-        const rect = mount.getBoundingClientReact();  //mouse position
+        console.log("Click detected");
+
+        const rect = mount.getBoundingClientRect();  //mouse position
+        console.log("Boudning rect: ", rect);
+
         mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y=((event.clientY - rect.top) / rect.height) * 2 - 1;
+        mouse.y= -((event.clientY - rect.top) / rect.height) * 2 + 1; //normalized y should be POSITIVE
+        console.log("Mouse normalized: ", mouse);
+
         raycaster.setFromCamera(mouse, camera);
         const hit = raycaster.intersectObject(instanced);
+        console.log("Raycast hits: ", hit);
 
         if(hit.length > 0){
-            const instanceID = hit[0].instanceID;
+            console.log("HIT instanceID: ", hit[0].instanceId);
+            const instanceID = hit[0].instanceId;
             onClickStar && onClickStar(data[instanceID]);
+        }
+        else{
+            console.log("No hit");
         }
     };
 
     //------HANDLE RESIZING------//
 
-    mount.addEventListener("Click", handleClick);
+    mount.addEventListener("click", handleClick);
 
         const handleResize = () => {
             camera.aspect = mount.clientWidth / mount.clientHeight;
@@ -95,7 +111,7 @@ export default function Stars({onClickStar})
     //------HANDLE CLEANUP------//
         return () => {
             window.removeEventListener("resize", handleResize);
-            mount.removeEventListener("Click", handleClick);
+            mount.removeEventListener("click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };
@@ -103,6 +119,17 @@ export default function Stars({onClickStar})
     }, [onClickStar]);
 
 //------RETURN OUTPUT------//
-    return(<div ref={mountRef} style={{width: "100vw", height: "100vh", overflow: "hidden"}}/>);
+    return(<div
+  ref={mountRef}
+  style={{
+    width: "100vw",
+    height: "100vh",
+    overflow: "hidden",
+    pointerEvents: "auto", // FORCE ENABLE
+    position: "relative",
+    background: "transparent"
+  }}
+/>
+);
 
 }

@@ -52,6 +52,7 @@ table {
 
 tr {
     /* border-bottom: 1px solid #ccc; */
+    
 }
 
 th, td{
@@ -89,3 +90,5 @@ td:first-child, th:first-child{
         justify-content: space-between;
     }
 }
+
+
