@@ -11,14 +11,14 @@ const Table = ({star}) => {
 //   console.log("Is data an array?", Array.isArray(data));
 //   console.log("First item:", data[0]);
   
-// if(!selectedStar)
-// {
-//     return(
-//         <Wrapper/>
-//     )
-// }
+if(!star)
+{
+    return(
+        <Wrapper/>
+    )
+}
 
-const displayed = star || data[0];
+const displayed = star;
 
 return(
     <table>

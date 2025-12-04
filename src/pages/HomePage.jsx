@@ -12,7 +12,7 @@ return (
         <br/><br/>
         <div className='setCol'>
         <Stars onClickStar = {setSelectedStar}/>
-        <Table selectedStar = {selectedStar}/>
+        <Table star = {selectedStar}/>
         </div>
     </Wrapper>
 

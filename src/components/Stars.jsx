@@ -132,5 +132,4 @@ export default function Stars({onClickStar})
   }}
 />
 );
-
 }
