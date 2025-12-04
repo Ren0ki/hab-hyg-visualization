@@ -53,13 +53,14 @@ export default function Stars({onClickStar})
                     temp.updateMatrix(); //update
                     instanced.setMatrixAt(i, temp.matrix); //use temp for instance
                 }
+                instanced.instanceMatrix.needsUpdate = true;
                 scene.add(instanced); //add instance sphere
        
     //------HANDLE RAYCASTING------//
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
 
-        instanced.raycast =  THREE.Mesh.prototype.raycast;
+        instanced.raycast =  THREE.InstancedMesh.prototype.raycast;
         instanced.instanceMatrix.needsUpdate = true;
         
         const handleClick = (event) => {
