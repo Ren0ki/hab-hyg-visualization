@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
+import { setupRaycastScript, raycastScript } from '../scripts/Raycasting';
 //import { Raycasting } from './Raycasting';
 
 export default function Stars({onClickStar})
@@ -62,25 +63,13 @@ export default function Stars({onClickStar})
         instanced.instanceMatrix.needsUpdate = true;
         
         const handleClick = (event) => {
-        console.log("Click detected");
-
-        const rect = mount.getBoundingClientRect();  //mouse position
-        console.log("Boudning rect: ", rect);
-
-        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y= -((event.clientY - rect.top) / rect.height) * 2 + 1; //normalized y should be POSITIVE
-        console.log("Mouse normalized: ", mouse);
-
-        raycaster.setFromCamera(mouse, camera);
-        const hit = raycaster.intersectObject(instanced);
-        console.log("Raycast hits: ", hit);
-
-        if(hit.length > 0){
-            console.log("HIT instanceID: ", hit[0].instanceId);
-            const instanceID = hit[0].instanceId;
-            onClickStar && onClickStar(data[instanceID]);
+        const hits = raycastScript(event, mount, camera, instanced,
+        (hit) => {
+            const id = hit.instanceId;
+            onClickStar & onClickStar(data[id]);
         }
-        else{
+        )
+        if(hits.length === 0){
             console.log("No hit");
         }
     };

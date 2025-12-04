@@ -25,32 +25,32 @@ return(
         <tbody>
     
                 <tr>
-                    <td> ID: </td>
+                    <td> <b>ID </b> </td>
                     <td>{displayed.ID}</td>
                 </tr>
 
                 <tr> 
-                    <td> Hip: </td>
+                    <td> <b>HIP </b> </td>
                     <td>{displayed.Hip}</td>
                 </tr>
 
                  <tr> 
-                    <td> Hab?: </td>
+                    <td> <b> HAB? </b> </td>
                     <td>{displayed.Hab}</td>
                 </tr>
 
                 <tr> 
-                    <td> Display Name: </td>
+                    <td> <b> DISPLAY NAME </b> </td>
                     <td>{displayed.DisplayName}</td>
                 </tr>
 
                 <tr> 
-                    <td> Hyg: </td>
+                    <td> <b> HYG </b> </td>
                     <td>{displayed.Hyg}</td>
                 </tr>
 
                 <tr> 
-                    <td> Bayer Flamsteed: </td>
+                    <td><b> BAYER FLAMSTEED </b> </td>
                     <td>{displayed.BayerFlamsteed}</td>
                 </tr>
 

@@ -12,11 +12,11 @@ return (
 
         <br/><br/>
 
-        <div class="background">
+        <div className="background">
             <Stars onClickStar = {setSelectedStar}/>
         </div>
 
-        <div class="foreground">
+        <div className="foreground">
             <Table star = {selectedStar}/>
         </div>
         
