@@ -14,9 +14,7 @@ export default function Stars({onClickStar})
     useEffect(() => {
 
     //------INIITIALIZING ENVIRONMENT VARIABLES------//
-        console.log("BEFORE MOUNT:", mountRef.current);
         const mount = mountRef.current; //construct mounting var
-        console.log("AFTER MOUNT:", mountRef.current);
         const scene = new THREE.Scene(); //construct scene
         const camera = new THREE.PerspectiveCamera(75, mount.clientWidth / mount.clientHeight, 1, 1e7); //construct camera
         camera.position.z = 500; //camera poistion on z-axis

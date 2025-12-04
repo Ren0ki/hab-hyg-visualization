@@ -47,21 +47,22 @@ table {
     width: 25%;
     border: 1px solid #ddd;
     border-radius: 25px;
-    background-color: #e1e1e1;;
+    background-color: #e1e1e1;
 }
 
 tr {
-    /* border-bottom: 1px solid #ccc; */
+    margin: 10px;
     
 }
 
 th, td{
     text-align: left;
-    padding: 15px;
+    padding: 10px;
     /* white-space: nowrap; */
     color: black;
     border-left: solid black 1px;
     border-bottom: solid black 1px;
+    font-size: 60%;
 }
 
 th{
@@ -91,4 +92,18 @@ td:first-child, th:first-child{
     }
 }
 
+    .background
+    {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .foreground{
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 

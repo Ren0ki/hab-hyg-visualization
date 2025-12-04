@@ -9,11 +9,17 @@ const [selectedStar, setSelectedStar] = useState();
 
 return (
     <Wrapper>
+
         <br/><br/>
-        <div className='setCol'>
-        <Stars onClickStar = {setSelectedStar}/>
-        <Table star = {selectedStar}/>
+
+        <div class="background">
+            <Stars onClickStar = {setSelectedStar}/>
         </div>
+
+        <div class="foreground">
+            <Table star = {selectedStar}/>
+        </div>
+        
     </Wrapper>
 
 );
