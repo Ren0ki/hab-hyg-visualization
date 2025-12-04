@@ -5,6 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
 import { setupRaycastScript, raycastScript } from '../scripts/Raycasting';
 import { resizeScript } from '../scripts/Resizing';
+import { animationScript } from '../scripts/Animation';
 //import { Raycasting } from './Raycasting';
 
 export default function Stars({onClickStar})
@@ -56,42 +57,31 @@ export default function Stars({onClickStar})
                 instanced.instanceMatrix.needsUpdate = true;
                 scene.add(instanced); //add instance sphere
        
-    //------HANDLE RAYCASTING------//
-
+        //raycasting
         instanced.raycast =  THREE.InstancedMesh.prototype.raycast;
         instanced.instanceMatrix.needsUpdate = true;
-        
-        const handleClick = (event) => {
-        const hits = raycastScript(event, mount, camera, instanced,
-        (hit) => {
-            const id = hit.instanceId;
-            onClickStar & onClickStar(data[id]);
-        }
-        )
-        if(hits.length === 0){
-            console.log("No hit");
-        }
-    };
+        const handleClick = (event) => 
+        { 
+            const hits = raycastScript(event, mount, camera, instanced,
+            (hit) => {const id = hit.instanceId; onClickStar & onClickStar(data[id]);})
+            if(hits.length === 0){console.log("No hit");}
+        };
 
-    //------HANDLE RESIZING------//
-
+    //resizing
     mount.addEventListener("click", handleClick);
-
-const handleResize = resizeScript(camera, renderer, mount);
+    const handleResize = resizeScript(camera, renderer, mount);
 
     //------HANDLE ANIMATION------//
 
-        function animate(){
-            requestAnimationFrame(animate);
+        const cleanupAnimation = animationScript(() => {
             controls.update();
             renderer.render(scene, camera);
-        }
-
-        animate(); //execute
+        });
 
     //------HANDLE CLEANUP------//
         return () => {
             handleResize();
+            cleanupAnimation();
             mount.removeEventListener("click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
