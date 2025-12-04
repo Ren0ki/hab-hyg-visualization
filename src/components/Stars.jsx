@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import data from '../local-data/data.json';
 import { setupRaycastScript, raycastScript } from '../scripts/Raycasting';
+import { resizeScript } from '../scripts/Resizing';
 //import { Raycasting } from './Raycasting';
 
 export default function Stars({onClickStar})
@@ -56,8 +57,6 @@ export default function Stars({onClickStar})
                 scene.add(instanced); //add instance sphere
        
     //------HANDLE RAYCASTING------//
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
 
         instanced.raycast =  THREE.InstancedMesh.prototype.raycast;
         instanced.instanceMatrix.needsUpdate = true;
@@ -78,13 +77,7 @@ export default function Stars({onClickStar})
 
     mount.addEventListener("click", handleClick);
 
-        const handleResize = () => {
-            camera.aspect = mount.clientWidth / mount.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(mount.clientWidth, mount.clientHeight);
-        };
-
-        window.addEventListener("resize", handleResize);
+const handleResize = resizeScript(camera, renderer, mount);
 
     //------HANDLE ANIMATION------//
 
@@ -98,7 +91,7 @@ export default function Stars({onClickStar})
 
     //------HANDLE CLEANUP------//
         return () => {
-            window.removeEventListener("resize", handleResize);
+            handleResize();
             mount.removeEventListener("click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
