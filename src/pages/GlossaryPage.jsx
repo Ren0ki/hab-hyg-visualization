@@ -14,7 +14,7 @@ return (
         <Glossary/>
         <br/>
                     <Link to="/">
-                <Button variant ="glossary">Return to map </Button>
+                <Button className ="btn">Return to map </Button>
             </Link>
         </Wrapper>
     );

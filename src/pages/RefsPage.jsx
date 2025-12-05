@@ -22,7 +22,7 @@ return (
         <a href="List of proper names of stars - Wikipedia"> Revised Harvard Photometry </a>
         </ul>
         <Link to="/">
-                <Button className="star-btn">Return to map </Button>
+                <Button className="btn">Return to map </Button>
             </Link>
         </Wrapper>
     );

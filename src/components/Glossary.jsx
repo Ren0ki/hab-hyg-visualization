@@ -33,7 +33,7 @@ return(
         {glossary.map(([term, definition], index) =>(
             <div key={index} className={styles.row}>
                 <div className={styles.term}><b>{term}</b> </div>
-                <div className={styles.definition}><b>{definition}</b> </div>
+                <div className={styles.definition}>{definition}</div>
                 </div>
         ))}
     </div>

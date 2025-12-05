@@ -8,8 +8,8 @@ export function sceneScript(mount){
             const renderer = new THREE.WebGLRenderer({antialias: true}); //enable WebGL antialiasing
             renderer.setSize(mount.clientWidth, mount.clientHeight); //replaced window with mount
             mount.appendChild(renderer.domElement); //replaced document.body with mount
-            const controls = new OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
+            const controls = new OrbitControls(camera, renderer.domElement); //make controls to orbit scene
+            controls.enableDamping = true; //dampening effect for movement momentum
 
             return{scene, camera, renderer, controls, domElement: renderer.domElement};
 }

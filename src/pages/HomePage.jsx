@@ -43,18 +43,18 @@ return (
 
         {/* Higher z-index */}
         <div className="foreground">
-            
+
             {/* Update table based on clicked star */}
             <Table star = {selectedStar}/>
             <br/><br/>
 
         {/* Links to glossary and refs pages */}
             <Link to="/glossary">
-                <Button className="glossary-btn"> Glossary </Button>
+                <Button className="btn"> Glossary </Button>
             </Link>
             <br/><br/>
             <Link to="/refs">
-                <Button className="refs-btn"> References </Button>
+                <Button className="btn"> References </Button>
             </Link>
         </div>
         </div>

@@ -3,8 +3,8 @@ import * as THREE from 'three';
 export function meshScript(rows, scale = 20)
 {
                     const count = rows.length;
-                    const sphereGeometry = new THREE.SphereGeometry(3, 8, 8);
-                    const sphereMaterial = new THREE.MeshBasicMaterial({color: 0xffffff});
+                    const sphereGeometry = new THREE.SphereGeometry(3, 8, 8); //sphere dimensions
+                    const sphereMaterial = new THREE.MeshBasicMaterial({color: 0xffffff}); //make white material
                     const instanced = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, count); //mesh instance
                     const temp = new THREE.Object3D(); //place holder
     
