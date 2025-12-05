@@ -13,14 +13,22 @@ export default function Stars({onClickStar})
 {
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
-    const rows = [];
-    <h1> THE HAB_HYG VISUALIZATION</h1>
+    //const rows = [];
 
     useEffect(() => {
 
     //initialize scene
     const mount = mountRef.current; //construct mounting var
     const{scene, camera, renderer, controls} = sceneScript(mount);
+
+    //initialize transition animation
+    let introProgress = 0;
+    const introDuration = 120;
+    const startZ = 300;
+    const endZ = 300;
+    camera.position.z = startZ;
+
+    //parse data
     const rows = parsingScript(data);
 
     //initialize stars
@@ -42,10 +50,13 @@ export default function Stars({onClickStar})
     const cleanupResize = resizeScript(camera, renderer, mount);
     
     //animation
-    const cleanupAnimation = animationScript(() => 
-        {
-            controls.update();
-            renderer.render(scene, camera);
+    const cleanupAnimation = animationScript(() => {
+        controls.update();
+        renderer.render(scene, camera);
+    }, camera, {
+        startZ: 200,
+        endZ: 500,
+        introDuration: 360
         });
 
     //------HANDLE CLEANUP------//
