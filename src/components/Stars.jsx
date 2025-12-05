@@ -78,7 +78,7 @@ const {highlightStar, updateHighlight} = highlightScript(instanced);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };
-    }, [onClickStar]);
+    }, []);
 
 //------RETURN OUTPUT------//
 return(

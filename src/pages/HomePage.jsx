@@ -7,6 +7,7 @@ import '../App.css';
 const HomePage = () => {
 const [selectedStar, setSelectedStar] = useState();
 const [hideTitle, setHideTitle] = useState(false);
+const [fullyHidden, setFullyHidden] = useState(false);
 
 const handleClickStar = useCallback((star) => {
     setSelectedStar(star);
@@ -20,14 +21,18 @@ return (
 
         <div className="fade-in">
         <div className="background">
-            <Stars onClickStar = {(handleClickStar) => {
-                setSelectedStar(star);
-                setHideTitle(true);
-            }}/>
+
+            <Stars onClickStar = {handleClickStar}/>
 
         </div>
 
-        <div className={`title ${hideTitle ? "fade-out" : ""}`}> THE HAB-HYG VISUALIZATION</div>
+        <div className={`
+            title ${hideTitle ? "fade-out" : ""}`} 
+            onAnimationEnd={() => setFullyHidden(true)}
+            style={{display: fullyHidden ? "none" : "block" }}
+        > 
+        
+        THE HAB-HYG VISUALIZATION</div>
 
         <div className="foreground">
             <Table star = {selectedStar}/>

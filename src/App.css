@@ -136,7 +136,6 @@ td:first-child, th:first-child{
     }
 
     .fade-out{
-      opacity: 1;
       animation: fadeOut 1.5s ease-out backwards;
     } 
 
