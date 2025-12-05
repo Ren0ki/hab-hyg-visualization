@@ -10,7 +10,7 @@ const  glossary = [
     //array entries for terms and definitions
     ["ID","Unique identification number assigned to each star" ],
     ["HIP", "Hipparcos catalog number; entry from the Eurpoean Space Agency's astrometric mission, Hipparcos"],
-    ["HAB?", "Is the system habitable? Yes (1) / No (0)"],
+    ["HAB?", "Is the system habitable? Yes (1) / No (null)"],
     [" DISPLAY NAME", "Unnoficial name; not approved by the International Astronomical Union"],
     ["HYG", "Hipparcos, Yale, and Gliese catalog numbers"],
     ["BAYER FLAMSTEED", "Flamsteed designation; a combination of numbers and constellation name for unique identification"],

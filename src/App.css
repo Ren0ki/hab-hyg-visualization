@@ -153,6 +153,9 @@ td:first-child, th:first-child{
       
     }
 
+    a{
+      color: rgb(234, 234, 234)
+    }
     a:visited{
       color: black !important;
     }

@@ -8,6 +8,7 @@ const RefsPage = () => {
 
 return (
     <Wrapper>
+         <div className="fade-in"> {/* container to trigger animation */}
         <h1> References </h1>
         <ul>
         <a href ="https://heasarc.gsfc.nasa.gov/W3Browse/all/hipparcos.html"> HIPPARCOS - Hipparcos Main Catalog </a>
@@ -21,9 +22,11 @@ return (
         <a href="https://ui.adsabs.harvard.edu/abs/1908AnHar..50....1P/abstract"> Revised Harvard Photometry </a>
         <a href="List of proper names of stars - Wikipedia"> Revised Harvard Photometry </a>
         </ul>
+        <br/>
         <Link to="/">
                 <Button className="btn">Return to map </Button>
             </Link>
+            </div>
         </Wrapper>
     );
 };
