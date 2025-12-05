@@ -13,28 +13,26 @@ export default function Stars({onClickStar})
 {
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
-    //const rows = [];
 
     useEffect(() => {
 
     //initialize scene
-    const temp = new THREE.Object3D();
-    let selectedId = null;
+    const temp = new THREE.Object3D(); //placeholder for selected star
+    let selectedId = null; //track currently selected star
     const mount = mountRef.current; //construct mounting var
-    const{scene, camera, renderer, controls} = sceneScript(mount);
+    const{scene, camera, renderer, controls} = sceneScript(mount); //call scene script
 
     //initialize transition animation
-    let introProgress = 0;
-    const introDuration = 120;
-    const startZ = 300;
-    const endZ = 300;
-    camera.position.z = startZ;
+    let introProgress = 0; //starting point
+    const introDuration = 120; //length of intro
+    const startZ = 300; //start position
+    camera.position.z = startZ; //starting camera position
 
     //parse data
-    const rows = parsingScript(data);
+    const rows = parsingScript(data); //parse data
 
     //initialize stars
-    const instanced = meshScript(rows, 20);
+    const instanced = meshScript(rows, 20); //call mesh script
     scene.add(instanced); //add instance sphere
        
     //raycasting
@@ -70,7 +68,7 @@ export default function Stars({onClickStar})
                 highlightStar(id);
                 onClickStar & onClickStar(data[id]);
             });
-            
+
             if(hits.length === 0){console.log("No hit");}
         };
 

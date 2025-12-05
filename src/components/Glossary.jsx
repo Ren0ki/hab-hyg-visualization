@@ -4,7 +4,7 @@ import { useState } from "react";
 import '../App.css';
 import Wrapper from "./Wrapper";
 
-const Table = ({star}) => {
+const Glossary = ({star}) => {
 
   console.log("Table component loaded");
 //   console.log("data =", data);
@@ -25,18 +25,18 @@ return(
         <tbody>
     
                 <tr>
-                    <td> <b>ID </b> </td>
-                    <td>{displayed.ID}</td>
+                    <td> <b> ID </b> </td>
+                    <td>Unique identification number assigned to each star </td>
                 </tr>
 
                 <tr> 
                     <td> <b>HIP </b> </td>
-                    <td>{displayed.Hip}</td>
+                    <td>Hipparcos catalog number; entry from the Eurpoean Space Agency's astrometric mission, Hipparcos</td>
                 </tr>
 
                  <tr> 
                     <td> <b> HAB? </b> </td>
-                    <td>{displayed.Hab}</td>
+                    <td>Is the system habitable? Yes (1) / No (0)</td>
                 </tr>
 
                 <tr> 
@@ -46,32 +46,32 @@ return(
 
                 <tr> 
                     <td> <b> HYG </b> </td>
-                    <td>{displayed.Hyg}</td>
+                    <td>Hipparcos, Yale, and Gliese catalog numbers</td>
                 </tr>
 
                 <tr> 
                     <td><b> BAYER FLAMSTEED </b> </td>
-                    <td>{displayed.BayerFlamsteed}</td>
+                    <td>Flamsteed designation; a combination of numbers and constellation name for unique identification</td>
                 </tr>
 
                <tr> 
                     <td>  <b>Gliese </b> </td>
-                    <td>{displayed.Gliese}</td>
+                    <td>Gliese catalog entry number </td>
                 </tr>
 
                 <tr> 
                     <td> <b> BD </b></td>
-                    <td>{displayed.BD}</td>
+                    <td>Bonner Durchmusterung catalog name </td>
                 </tr>
                 
                 <tr> 
                     <td> <b> HD </b> </td>
-                    <td>{displayed.HD}</td>
+                    <td>Henry Draper catalog number</td>
                 </tr>
 
                 <tr> 
                     <td> <b> HR </b> </td>
-                    <td>{displayed.HR}</td>
+                    <td>Entry number in the Harvard Revised Photometry Catalogue</td>
                 </tr>
 
                 <tr> 
@@ -81,30 +81,30 @@ return(
 
                 <tr> 
                     <td> <b> Spectral Class </b> </td>
-                    <td>{displayed.SpectralClass}</td>
+                    <td>Classification of stars based on their spectral characteristics. particularly with Harvard classification</td>
                 </tr>
 
                 <tr> 
                     <td><b> Distance </b> </td>
-                    <td>{displayed.Distance}</td>
+                    <td>Distance of system with respect to Earth </td>
                 </tr>
 
                 <tr> 
                     <td> <b> Abs Mag </b> </td>
-                    <td>{displayed.AbsMag}</td>
+                    <td>A measure of the luminosity of a celestial object on an inverse logarithmic astronomical magnitude scale</td>
                 </tr>
                 
                 <tr>
                     <td> <b> X </b> </td>
-                    <td> {displayed.Xg}</td>
+                    <td>X-coordinate </td>
                 </tr>
                   <tr>
                     <td> <b> Y</b> </td>
-                    <td> {displayed.Yg}</td>
+                    <td> Y-coordinate </td>
                 </tr>
                   <tr>
                     <td> <b> Z </b></td>
-                    <td> {displayed.Zg}</td>
+                    <td> Z-coordinate </td>
                 </tr>
 
         </tbody>
@@ -112,4 +112,4 @@ return(
 );
 };
 
-export default Table;
+export default Glossary;
