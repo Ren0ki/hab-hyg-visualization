@@ -18,6 +18,8 @@ export default function Stars({onClickStar})
     useEffect(() => {
 
     //initialize scene
+    const temp = new THREE.Object3D();
+    let selectedId = null;
     const mount = mountRef.current; //construct mounting var
     const{scene, camera, renderer, controls} = sceneScript(mount);
 
@@ -38,10 +40,37 @@ export default function Stars({onClickStar})
     //raycasting
     instanced.raycast =  THREE.InstancedMesh.prototype.raycast;
     instanced.instanceMatrix.needsUpdate = true;
+
+    function highlightStar(id){
+        if(selectedId !== null){
+            instanced.getMatrixAt(selectedId, temp.matrix);
+            temp.matrix.decompose(temp.position, temp.quaternion, temp.scale);
+            temp.scale.set(1, 1, 1);
+            temp.updateMatrix();
+            instanced.setMatrixAt(selectedId, temp.matrix);
+        }
+
+        instanced.getMatrixAt(id, temp.matrix);
+        temp.matrix.decompose(temp.position, temp.quaternion, temp.scale);
+        temp.scale.set(3, 3, 3);
+        temp.updateMatrix();
+        instanced.setMatrixAt(id, temp.matrix);
+
+        instanced.instanceMatrix.needsUpdate = true;
+        selectedId = id;
+
+
+    }
+
     const handleClick = (event) => 
         { 
             const hits = raycastScript(event, mount, camera, instanced,
-            (hit) => {const id = hit.instanceId; onClickStar & onClickStar(data[id]);})
+            (hit) => {
+                const id = hit.instanceId; 
+                highlightStar(id);
+                onClickStar & onClickStar(data[id]);
+            });
+            
             if(hits.length === 0){console.log("No hit");}
         };
 
