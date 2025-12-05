@@ -18,12 +18,12 @@ if(!star)
     )
 }
 
-const displayed = star;
+const displayed = star; //user's chosen star
 
 return(
     <table>
         <tbody>
-    
+        {/* display information tied to chosen star */}
                 <tr>
                     <td> <b>ID </b> </td>
                     <td>{displayed.ID}</td>

@@ -142,9 +142,4 @@ td:first-child, th:first-child{
         opacity: 0;
       }
     }
-
-    .glossary-btn, .refs-btn{
-      border-radius: 10px;
-      background-color: #e1e1e1 !important;
-      color: black !important;
-    }
+    

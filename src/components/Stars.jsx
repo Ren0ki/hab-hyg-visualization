@@ -45,10 +45,11 @@ const {highlightStar, updateHighlight} = highlightScript(instanced);
 
     const handleClick = (event) => 
         { 
+            //register click
             const hits = raycastScript(event, mount, camera, instanced,
             (hit) => {
                 const id = hit.instanceId; 
-                highlightStar(id);
+                highlightStar(id); //increase star size when selected
                 onClickStar && onClickStar(data[id]);
             });
 
@@ -57,30 +58,32 @@ const {highlightStar, updateHighlight} = highlightScript(instanced);
 
     //resizing
     mount.addEventListener("click", handleClick);
-    const cleanupResize = resizeScript(camera, renderer, mount);
+    const cleanupResize = resizeScript(camera, renderer, mount); //imported script from ResizeScript
     
     //animation
     const cleanupAnimation = animationScript(() => {
-        updateHighlight();
-        controls.update();
-        renderer.render(scene, camera);
+        updateHighlight(); //highlight resize animation
+        controls.update(); //update controls throughout animation
+        renderer.render(scene, camera); //render scene and camera
+
+        //set start and end position for camera w duraction
     }, camera, {
         startZ: 200,
         endZ: 500,
         introDuration: 360
         });
 
-    //------HANDLE CLEANUP------//
+    //cleanup
         return () => {
-            cleanupResize();
-            cleanupAnimation();
+            cleanupResize(); //ResizeScript
+            cleanupAnimation(); //AnimationScript
             mount.removeEventListener("click", handleClick);
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };
     }, []);
 
-//------RETURN OUTPUT------//
+//output
 return(
 <div
   ref={mountRef}
@@ -90,4 +93,4 @@ return(
 
 }
 
-export default React.memo(Stars);
+export default React.memo(Stars); //prevent relloading star on update

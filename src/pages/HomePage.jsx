@@ -22,13 +22,15 @@ return (
 
         <br/><br/>
 
-        <div className="fade-in">
-        <div className="background">
+        <div className="fade-in"> {/* container to trigger animation */}
+        <div className="background"> {/* lower z-index */}
 
+         {/* get selected star */}
             <Stars onClickStar = {handleClickStar}/>
 
         </div>
 
+        {/* Handle text animation */}
         <div className={`
             title ${hideTitle ? "fade-out" : ""}`} 
             onAnimationEnd={() => setFullyHidden(true)}
@@ -39,9 +41,14 @@ return (
         
         </div>
 
+        {/* Higher z-index */}
         <div className="foreground">
+            
+            {/* Update table based on clicked star */}
             <Table star = {selectedStar}/>
             <br/><br/>
+
+        {/* Links to glossary and refs pages */}
             <Link to="/glossary">
                 <Button className="glossary-btn"> Glossary </Button>
             </Link>
