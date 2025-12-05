@@ -10,15 +10,7 @@ const Glossary = ({star}) => {
 //   console.log("data =", data);
 //   console.log("Is data an array?", Array.isArray(data));
 //   console.log("First item:", data[0]);
-  
-if(!star)
-{
-    return(
-        <Wrapper/>
-    )
-}
 
-const displayed = star;
 
 return(
     <table>
@@ -41,7 +33,7 @@ return(
 
                 <tr> 
                     <td> <b> DISPLAY NAME </b> </td>
-                    <td>{displayed.DisplayName}</td>
+                    <td>Unnoficial name; not approved by the International Astronomical Union </td>
                 </tr>
 
                 <tr> 
@@ -56,27 +48,27 @@ return(
 
                <tr> 
                     <td>  <b>Gliese </b> </td>
-                    <td>Gliese catalog entry number </td>
+                    <td>Gliese catalog entry number; a star catalog listing stars located within 25 parsecs (82 ly) of the Sun. </td>
                 </tr>
 
                 <tr> 
                     <td> <b> BD </b></td>
-                    <td>Bonner Durchmusterung catalog name </td>
+                    <td>Bonner Durchmusterung catalog entry; an astrometric star catalog of the whole sky, published by the Bonn Observatory in Germany </td>
                 </tr>
                 
                 <tr> 
                     <td> <b> HD </b> </td>
-                    <td>Henry Draper catalog number</td>
+                    <td>Henry Draper catalog number; catalog giving spectroscopic classifications for 225,300 stars </td>
                 </tr>
 
                 <tr> 
                     <td> <b> HR </b> </td>
-                    <td>Entry number in the Harvard Revised Photometry Catalogue</td>
+                    <td>Entry number in the Harvard Revised Photometry Catalogue; a catalogue of the positions, photometric magnitudes and spectra of 9110 stars</td>
                 </tr>
 
                 <tr> 
                     <td> <b> Proper Name </b> </td>
-                    <td>{displayed.ProperName}</td>
+                    <td>Name likely approved by the International Astronomic Union </td>
                 </tr>
 
                 <tr> 
@@ -86,7 +78,7 @@ return(
 
                 <tr> 
                     <td><b> Distance </b> </td>
-                    <td>Distance of system with respect to Earth </td>
+                    <td>Distance of system with respect to the Sun </td>
                 </tr>
 
                 <tr> 

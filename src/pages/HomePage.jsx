@@ -2,10 +2,13 @@ import Table from "../components/Table";
 import Wrapper from "../components/Wrapper";
 import Stars from "../components/Stars";
 import { useCallback, useState } from "react";
+import data from '../local-data/data.json';
+import { Link, Route, Routes } from "react-router";
+import { Button } from "@mui/material";
 import '../App.css';
 
 const HomePage = () => {
-const [selectedStar, setSelectedStar] = useState();
+const [selectedStar, setSelectedStar] = useState(data[0]);
 const [hideTitle, setHideTitle] = useState(false);
 const [fullyHidden, setFullyHidden] = useState(false);
 
@@ -32,10 +35,20 @@ return (
             style={{display: fullyHidden ? "none" : "block" }}
         > 
         
-        THE HAB-HYG VISUALIZATION</div>
+            THE HAB-HYG VISUALIZATION
+        
+        </div>
 
         <div className="foreground">
             <Table star = {selectedStar}/>
+            <br/><br/>
+            <Link to="/glossary">
+                <Button className="glossary-btn"> Glossary </Button>
+            </Link>
+            <br/><br/>
+            <Link to="/refs">
+                <Button className="refs-btn"> References </Button>
+            </Link>
         </div>
         </div>
     </Wrapper>
