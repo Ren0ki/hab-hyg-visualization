@@ -136,7 +136,7 @@ td:first-child, th:first-child{
     }
 
     .fade-out{
-      animation: fadeOut 1.5s ease-out backwards;
+      animation: fadeOut 1.5s ease-out forwards;
     } 
 
     @keyframes fadeOut {
