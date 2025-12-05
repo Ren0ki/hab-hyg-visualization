@@ -135,7 +135,7 @@ td:first-child, th:first-child{
       }
     }
 
-    /* .fade-out{
+    .fade-out{
       opacity: 1;
       animation: fadeOut 1.5s ease-out backwards;
     } 
@@ -144,4 +144,4 @@ td:first-child, th:first-child{
       to{
         opacity: 0;
       }
-    } */
+    }

@@ -8,8 +8,9 @@ import { animationScript } from '../scripts/Animation';
 import { sceneScript } from '../scripts/Scene';
 import { parsingScript } from '../scripts/Parsing';
 import { meshScript } from '../scripts/MakeMeshes';
-
-export default function Stars({onClickStar})
+import { highlightScript } from '../scripts/Highlighting';
+import React from 'react';
+ function Stars({onClickStar})
 {
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
@@ -17,8 +18,8 @@ export default function Stars({onClickStar})
     useEffect(() => {
 
     //initialize scene
-    const temp = new THREE.Object3D(); //placeholder for selected star
-    let selectedId = null; //track currently selected star
+    // const temp = new THREE.Object3D(); //placeholder for selected star
+    // let selectedId = null; //track currently selected star
     const mount = mountRef.current; //construct mounting var
     const{scene, camera, renderer, controls} = sceneScript(mount); //call scene script
 
@@ -36,29 +37,11 @@ export default function Stars({onClickStar})
     scene.add(instanced); //add instance sphere
        
     //raycasting
-    instanced.raycast =  THREE.InstancedMesh.prototype.raycast;
-    instanced.instanceMatrix.needsUpdate = true;
+    instanced.raycast =  THREE.InstancedMesh.prototype.raycast; 
+    instanced.instanceMatrix.needsUpdate = true; 
 
-    function highlightStar(id){
-        if(selectedId !== null){
-            instanced.getMatrixAt(selectedId, temp.matrix);
-            temp.matrix.decompose(temp.position, temp.quaternion, temp.scale);
-            temp.scale.set(1, 1, 1);
-            temp.updateMatrix();
-            instanced.setMatrixAt(selectedId, temp.matrix);
-        }
-
-        instanced.getMatrixAt(id, temp.matrix);
-        temp.matrix.decompose(temp.position, temp.quaternion, temp.scale);
-        temp.scale.set(3, 3, 3);
-        temp.updateMatrix();
-        instanced.setMatrixAt(id, temp.matrix);
-
-        instanced.instanceMatrix.needsUpdate = true;
-        selectedId = id;
-
-
-    }
+    //highlight selected star
+const {highlightStar, updateHighlight} = highlightScript(instanced);
 
     const handleClick = (event) => 
         { 
@@ -66,7 +49,7 @@ export default function Stars({onClickStar})
             (hit) => {
                 const id = hit.instanceId; 
                 highlightStar(id);
-                onClickStar & onClickStar(data[id]);
+                onClickStar && onClickStar(data[id]);
             });
 
             if(hits.length === 0){console.log("No hit");}
@@ -78,6 +61,7 @@ export default function Stars({onClickStar})
     
     //animation
     const cleanupAnimation = animationScript(() => {
+        updateHighlight();
         controls.update();
         renderer.render(scene, camera);
     }, camera, {
@@ -103,4 +87,7 @@ return(
   style={{width: "100vw", height: "100vh", overflow: "hidden", pointerEvents: "auto", position: "relative",background: "transparent"}}
 />
 );
+
 }
+
+export default React.memo(Stars);
