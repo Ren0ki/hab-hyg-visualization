@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import data from '../local-data/data.json';
-import { setupRaycastScript, raycastScript } from '../scripts/Raycasting';
+import { raycastScript } from '../scripts/Raycasting';
 import { resizeScript } from '../scripts/Resizing';
 import { animationScript } from '../scripts/Animation';
 import { sceneScript } from '../scripts/Scene';
@@ -14,6 +14,7 @@ export default function Stars({onClickStar})
     //define mountToDom, use to insert element into DOM
     const mountRef = useRef();
     const rows = [];
+    <h1> THE HAB_HYG VISUALIZATION</h1>
 
     useEffect(() => {
 

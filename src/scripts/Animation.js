@@ -9,6 +9,5 @@
         
             animate(); //execute
 
-            return () =>{ cancelAnimationFrame(frameId);
-        };
+            return () =>{ cancelAnimationFrame(frameId)};
     }

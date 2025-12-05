@@ -16,6 +16,8 @@ return (
             <Stars onClickStar = {setSelectedStar}/>
         </div>
 
+        <div className="title"> THE HAB-HYG VISUALIZATION</div>
+
         <div className="foreground">
             <Table star = {selectedStar}/>
         </div>
