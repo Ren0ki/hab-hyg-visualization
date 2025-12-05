@@ -98,6 +98,14 @@ return(
                     <td> X: </td>
                     <td> {displayed.Xg}</td>
                 </tr>
+                  <tr>
+                    <td> Y: </td>
+                    <td> {displayed.Yg}</td>
+                </tr>
+                  <tr>
+                    <td> Z: </td>
+                    <td> {displayed.Zg}</td>
+                </tr>
 
         </tbody>
     </table>

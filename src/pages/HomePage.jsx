@@ -12,6 +12,7 @@ return (
 
         <br/><br/>
 
+        <div className="fade-in">
         <div className="background">
             <Stars onClickStar = {setSelectedStar}/>
         </div>
@@ -21,7 +22,7 @@ return (
         <div className="foreground">
             <Table star = {selectedStar}/>
         </div>
-        
+        </div>
     </Wrapper>
 
 );
